@@ -3,7 +3,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Logo from '@/images/pardy.png'
-import { Button } from '@nextui-org/react'
+import { Button, cn } from '@nextui-org/react'
+import { usePathname } from 'next/navigation'
+import { boolean } from 'drizzle-orm/mysql-core'
 
 const links = [
   { route: '/dashboard', name: 'Home' },
@@ -13,8 +15,17 @@ const links = [
   { route: '/dashboard/settings', name: 'Settings' },
 ]
 
+const isActive = (path: string, route: string) => {
+  if (path === '/dashboard') {
+    return path === route
+  } else {
+    return path.includes(route)
+  }
+}
+
 const Side = () => {
   const activeClass = 'bg-primary hover:bg-primary'
+  const path = usePathname()
 
   return (
     <div className="w-full h-full px-3 relative">
@@ -28,7 +39,10 @@ const Side = () => {
           <div className="w-full" key={link.route}>
             <Link href={link.route}>
               <div
-                className={`w-full h-full py-2 px-2 hover:bg-content1 rounded-lg `}
+                className={cn(
+                  `w-full h-full py-2 px-2 hover:bg-content1 rounded-lg`,
+                  isActive(path, link.route) && activeClass
+                )}
               >
                 {link.name}
               </div>
