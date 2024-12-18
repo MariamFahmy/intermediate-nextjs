@@ -36,6 +36,6 @@ export const getRsvpsForDashboard = memoize(
     persist: true,
     revalidateTags: () => ['dashboard:rsvps'],
     log: ['datacache', 'dedupe', 'verbose'],
-    logid: 'dasjboard:rsvps',
+    logid: 'dashboard:rsvps',
   }
 )
