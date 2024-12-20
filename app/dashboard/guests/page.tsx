@@ -13,3 +13,5 @@ const GuestsPage = async () => {
     </div>
   )
 }
+
+export default GuestsPage
