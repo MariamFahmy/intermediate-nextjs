@@ -1,8 +1,15 @@
 'use client'
-import Shell from '@/components/Shell'
-import { usePathname } from 'next/navigation'
 
-const Dashboard = ({ children, rsvps, events }) => {
+import { usePathname } from 'next/navigation'
+import Shell from '@/components/Shell'
+
+interface DashboardProps {
+  children: React.ReactNode
+  events: React.ReactNode
+  rsvps: React.ReactNode
+}
+
+const Dashboard = ({ children, events, rsvps }: DashboardProps) => {
   const path = usePathname()
 
   return (

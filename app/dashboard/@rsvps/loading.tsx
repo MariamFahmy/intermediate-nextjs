@@ -1,5 +1,7 @@
+import { Spinner } from '@nextui-org/spinner'
+
 const RsvpsLoader = () => {
-  return '...loading'
+  return <Spinner />
 }
 
 export default RsvpsLoader

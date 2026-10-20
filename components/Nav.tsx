@@ -1,8 +1,8 @@
 'use client'
 import { Input } from '@nextui-org/react'
-import { createNewEvent } from '@/actions/events'
 import { Button, Tooltip } from '@nextui-org/react'
 import { CirclePlus } from 'lucide-react'
+import { createNewEvent } from '@/actions/events'
 import { useTransition } from 'react'
 
 const Nav = () => {

@@ -17,7 +17,9 @@ export const getRsvpsForDashboard = memoize(
     })
 
     const userEventIds = userEvents.map((event) => event.id)
-    if (!userEventIds.length) return []
+    if (!userEventIds.length) {
+      return []
+    }
 
     const data = await db
       .selectDistinct()
@@ -33,8 +35,7 @@ export const getRsvpsForDashboard = memoize(
   {
     persist: true,
     revalidateTags: () => ['dashboard:rsvps'],
-    suppressWarnings: true,
-    log: ['datacache', 'verbose'],
+    log: ['datacache', 'dedupe', 'verbose'],
     logid: 'dashboard:rsvps',
   }
 )

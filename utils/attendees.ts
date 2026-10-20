@@ -1,13 +1,14 @@
 import 'server-only'
 import { db } from '@/db/db'
 import { attendees, events, rsvps } from '@/db/schema'
-import { memoize } from 'nextjs-better-unstable-cache'
 import { eq, sql } from 'drizzle-orm'
 import { delay } from './delay'
+import { memoize } from 'nextjs-better-unstable-cache'
 
 export const getAttendeesCountForDashboard = memoize(
   async (userId: string) => {
     await delay()
+
     const counts = await db
       .select({
         totalAttendees: sql`count(distinct ${attendees.id})`,
@@ -26,7 +27,7 @@ export const getAttendeesCountForDashboard = memoize(
     persist: true,
     revalidateTags: () => ['dashboard:attendees'],
     suppressWarnings: true,
-    log: ['datacache', 'verbose'],
+    log: ['datacache', 'verbose', 'dedupe'],
     logid: 'dashboard:attendees',
   }
 )
@@ -34,6 +35,7 @@ export const getAttendeesCountForDashboard = memoize(
 export const getGuestList = memoize(
   async (userId: string) => {
     await delay()
+
     const uniqueAttendees = await db
       .selectDistinct({
         id: attendees.id,

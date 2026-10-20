@@ -8,6 +8,7 @@ const statusColors = {
   maybe: 'warning',
   'not-going': 'danger',
 }
+
 const RsvpsSlot = async () => {
   const user = await getCurrentUser()
   const data = await getRsvpsForDashboard(user.id)
@@ -19,7 +20,7 @@ const RsvpsSlot = async () => {
         <div className="rounded-md border border-default-100 my-8">
           {data.map(({ rsvps, events, attendees }) => (
             <div
-              key={rsvps.id}
+              key={rsvps?.id}
               className="border-b border-default-100 p-2 flex gap-2"
             >
               <span>{attendees.name}</span>
@@ -29,7 +30,7 @@ const RsvpsSlot = async () => {
                 </Chip>
               </span>
               <span>
-                <Link href={`/dashboard/events/${events.id}`}>
+                <Link href={`/dashboard/events/${events?.id}`}>
                   <Chip size="sm" variant="faded">
                     {events?.name}
                   </Chip>

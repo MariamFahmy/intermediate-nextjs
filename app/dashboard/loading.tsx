@@ -1,5 +1,7 @@
+import { Spinner } from '@nextui-org/spinner'
+
 const HomeLoader = () => {
-  return '...loading'
+  return <Spinner />
 }
 
 export default HomeLoader

@@ -11,14 +11,14 @@ const statusColors = {
   canceled: 'danger',
 }
 
-const EventsRsvp = async () => {
+const EventsSlot = async () => {
   const user = await getCurrentUser()
   const events = await getEventsForDashboard(user.id)
 
   return (
     <div className="w-full h-full p-4 flex justify-center">
       <div className="w-full">
-        <h2 className="text-center text-xl">{`Latest Events`}</h2>
+        <h2 className="text-center text-xl">Latest Events</h2>
         <div className="rounded-md border border-default-100 my-8">
           {events.map((event) => (
             <div
@@ -46,4 +46,4 @@ const EventsRsvp = async () => {
   )
 }
 
-export default EventsRsvp
+export default EventsSlot

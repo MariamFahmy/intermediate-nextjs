@@ -5,7 +5,6 @@ import { redirect } from 'next/navigation'
 const EventPage = async ({ params }) => {
   const user = await getCurrentUser()
   const event = await getOneEvent(user.id, params.id)
-
   if (!event) redirect('/dashboard/events')
 
   return <div>{event.name}</div>

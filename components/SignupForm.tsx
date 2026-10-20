@@ -1,10 +1,11 @@
+// /components/SignupForm.tsx
 'use client'
 
 import { useFormState } from 'react-dom'
 import { Input, Button } from '@nextui-org/react'
 import { registerUser } from '@/actions/auth'
 import Link from 'next/link'
-import Submit from './Submit'
+import SubmitButton from './SubmitButton'
 
 const initState = { message: null }
 
@@ -29,7 +30,7 @@ const SignupForm = () => {
         placeholder="Password"
         required
       />
-      <Submit label={'signup'} />
+      <SubmitButton label={'Sign Up'} />
       <div>
         <Link href="/signin">{`Already have an account?`}</Link>
       </div>
